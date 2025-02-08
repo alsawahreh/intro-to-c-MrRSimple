@@ -1,10 +1,4 @@
-using System;
+#!/bin/bash
 
-class Program
-{
-    static void Main()
-    {
-        int result = 1 + 1;
-        Console.WriteLine(result);
-    }
-}
+result=$((1 + 1))
+echo "$result"
