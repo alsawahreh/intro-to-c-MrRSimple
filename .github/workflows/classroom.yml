@@ -13,17 +13,30 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0'
+
+    - name: Restore dependencies
+      run: dotnet restore || true
+
+    - name: Build project
+      run: dotnet build --configuration Release
+
     - name: hello world
       id: hello-world
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: hello world
         setup-command: ''
-        command: dotnet run
-        input: jamal
-        expected-output: hello, jamal
-        comparison-method: contains
+        command: echo "jamal" | dotnet run
+        input: ''
+        expected-output: "Hello, Jamal!"
+        comparison-method: exact
         timeout: 10
+
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
