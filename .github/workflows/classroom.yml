@@ -19,9 +19,9 @@ jobs:
       with:
         test-name: hello world
         setup-command: ''
-        command: "./hello.sh"
-        input: 1+1
-        expected-output: '2'
+        command: dotnet run
+        input: jamal
+        expected-output: hello, jamal
         comparison-method: contains
         timeout: 10
     - name: Autograding Reporter
